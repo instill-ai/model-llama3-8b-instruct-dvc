@@ -1,0 +1,9 @@
+build:
+  gpu: true
+  python_version: "3.11"  # support only 3.11
+  python_packages:
+    - torch==2.2.2
+    - sentencepiece==0.2.0
+    - transformers==4.40.0
+repo: admin/model-llama3-8b-instruct  # make sure the repo name matched what you created on console
+tag: v0.1.2-gpu

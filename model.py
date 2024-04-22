@@ -26,11 +26,7 @@ from instill.helpers import (
 
 @instill_deployment
 class Llama3Instruct:
-    def __init__(self, model_path: str):
-        self.application_name = "_".join(model_path.split("/")[3:5])
-        self.deployement_name = model_path.split("/")[4]
-        print(f"application_name: {self.application_name}")
-        print(f"deployement_name: {self.deployement_name}")
+    def __init__(self):
         print(f"torch version: {torch.__version__}")
 
         print(f"torch.cuda.is_available() : {torch.cuda.is_available()}")
@@ -41,7 +37,7 @@ class Llama3Instruct:
 
         self.pipeline = transformers.pipeline(
             "text-generation",
-            model=model_path,
+            model="Meta-Llama-3-8B-Instruct",
             model_kwargs={"torch_dtype": torch.bfloat16},
             device="cuda",
         )
@@ -326,11 +322,4 @@ class Llama3Instruct:
         )
 
 
-deployable = InstillDeployable(
-    Llama3Instruct,
-    model_weight_or_folder_name="Meta-Llama-3-8B-Instruct/",
-    use_gpu=True,
-)
-
-deployable.update_min_replicas(1)
-deployable.update_max_replicas(1)
+deployable = InstillDeployable(Llama3Instruct).get_deployment_handle()
