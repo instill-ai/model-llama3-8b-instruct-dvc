@@ -322,4 +322,4 @@ class Llama3Instruct:
         )
 
 
-deployable = InstillDeployable(Llama3Instruct).get_deployment_handle()
+entrypoint = InstillDeployable(Llama3Instruct).get_deployment_handle()
