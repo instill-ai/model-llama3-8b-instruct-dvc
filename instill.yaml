@@ -5,4 +5,4 @@ build:
     - torch==2.2.2
     - sentencepiece==0.2.0
     - transformers==4.40.0
-repo: admin/model-llama3-8b-instruct  # make sure the repo name matched what you created on console
+repo: admin/llama3-8b-instruct  # make sure the repo name matched what you created on console
